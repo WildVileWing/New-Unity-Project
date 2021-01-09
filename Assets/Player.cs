@@ -26,9 +26,12 @@ public class Player
         PlayerMagic = (int)(PlayerMana * 0.25);
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     
    
 =======
+=======
+>>>>>>> Stashed changes
  
     public bool Atack(Monster monster)
     {
@@ -39,6 +42,7 @@ public class Player
         else return true; 
     }
     public bool MagicAttack(Monster monster)
+<<<<<<< Updated upstream
     {
         CurrentPlayerMana = CurrentPlayerMana - (int)(PlayerMana * 0.5) >= 0 ? CurrentPlayerMana - (int)(PlayerMana * 0.5) : 0;
         monster.CurrentMonsterHealth = (PlayerMagic) < 0 ? monster.CurrentMonsterHealth : (monster.CurrentMonsterHealth - PlayerMagic);
@@ -47,10 +51,14 @@ public class Player
 >>>>>>> Stashed changes
 
     public bool MonsterAtack(int monsterDamage)
+=======
+>>>>>>> Stashed changes
     {
-        CurrentPlayerHealth = (monsterDamage - PlayerDefense) < 0 ? CurrentPlayerHealth : (CurrentPlayerHealth - (monsterDamage - PlayerDefense));
-        if (CurrentPlayerHealth < 1) return false; 
-          else return true;
+        CurrentPlayerMana = CurrentPlayerMana - (int)(PlayerMana * 0.5) >= 0 ? CurrentPlayerMana - (int)(PlayerMana * 0.5) : 0;
+        monster.CurrentMonsterHealth = (PlayerMagic) < 0 ? monster.CurrentMonsterHealth : (monster.CurrentMonsterHealth - PlayerMagic);
+        if (monster.CurrentMonsterHealth < 1) return false;
+        else return true;
+
     }
     public void InformationAboutPlayer(Text text)
     {
