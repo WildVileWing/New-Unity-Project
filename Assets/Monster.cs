@@ -38,28 +38,12 @@ public class Monster
         MonsterGold = monster.MonsterGold;
         Items = monster.Items;
     }
-    public bool PlayerAttack(int damage)
+    public bool Attack(Player player)
     {   
-        Temp.player.CurrentPlayerMana += (int)(Temp.player.PlayerMana * 0.10);
-        if((Temp.player.CurrentPlayerMana > Temp.player.PlayerMana) || (Temp.player.CurrentPlayerMana < Temp.player.PlayerMana))
-        {
-            Temp.player.CurrentPlayerMana = Temp.player.PlayerMana;
-        }
-        CurrentMonsterHealth = (damage - MonsterDefense) < 0 ? CurrentMonsterHealth : (CurrentMonsterHealth - (damage - MonsterDefense));
-        if (CurrentMonsterHealth < 1) return false;
-        else return true; 
-    }
-    public bool PlayerMagicAttack(int magicDamage)
-    {
-        Temp.player.CurrentPlayerMana -= (int)(Temp.player.PlayerMana * 0.5);
-        if ((Temp.player.CurrentPlayerMana > Temp.player.PlayerMana) || (Temp.player.CurrentPlayerMana < Temp.player.PlayerMana))
-        {
-            Temp.player.CurrentPlayerMana = Temp.player.PlayerMana;
-        }
-        CurrentMonsterHealth = (magicDamage) < 0 ? CurrentMonsterHealth : (CurrentMonsterHealth - magicDamage);
-        if (CurrentMonsterHealth < 1) return false;
+        player.CurrentPlayerHealth = (MonsterDamage - player.PlayerDefense) < 0 ? player.CurrentPlayerHealth : 
+     (player.CurrentPlayerHealth - (MonsterDamage - player.PlayerDefense));
+        if (player.CurrentPlayerHealth < 1) return false; 
         else return true;
-
     }
     public void InformationAboutMonster(Text text)
     {
