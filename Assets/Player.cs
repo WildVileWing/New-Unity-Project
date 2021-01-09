@@ -23,14 +23,22 @@ public class Player
         CurrentPlayerHealth = PlayerHealth;
         PlayerLuck = luck;
     }
-    
-   
-
-    public bool MonsterAtack(int monsterDamage)
+ 
+    public bool Atack(Monster monster)
     {
-        CurrentPlayerHealth = (monsterDamage - PlayerDefense) < 0 ? CurrentPlayerHealth : (CurrentPlayerHealth - (monsterDamage - PlayerDefense));
-        if (CurrentPlayerHealth < 1) return false; 
-          else return true;
+        CurrentPlayerMana = CurrentPlayerMana + (int)(PlayerMana * 0.10) <= PlayerMana ? CurrentPlayerMana + (int)(PlayerMana * 0.10) : PlayerMana;
+        monster.CurrentMonsterHealth = (PlayerDamage - monster.MonsterDefense) < 0 ? monster.CurrentMonsterHealth :
+        (monster.CurrentMonsterHealth - (PlayerDamage - monster.MonsterDefense));
+        if (monster.CurrentMonsterHealth < 1) return false;
+        else return true; 
+    }
+    public bool MagicAttack(Monster monster)
+    {
+        CurrentPlayerMana = CurrentPlayerMana - (int)(PlayerMana * 0.5) >= 0 ? CurrentPlayerMana - (int)(PlayerMana * 0.5) : 0;
+        monster.CurrentMonsterHealth = (magicDamage) < 0 ? monster.CurrentMonsterHealth : (monster.CurrentMonsterHealth - magicDamage);
+        if (monster.CurrentMonsterHealth < 1) return false;
+        else return true;
+
     }
     public void InformationAboutPlayer(Text text)
     {
