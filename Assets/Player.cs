@@ -13,6 +13,7 @@ public class Player
     public int CurrentPlayerHealth;
     public int PlayersGold;
     public int PlayerLuck;
+    public int PlayerMagic;
     public Player(int health, int mana, int damage, int defense, int luck) 
     {
         PlayerHealth = health; 
@@ -22,9 +23,28 @@ public class Player
         PlayerDefense = defense; 
         CurrentPlayerHealth = PlayerHealth;
         PlayerLuck = luck;
+        PlayerMagic = (int)(PlayerMana * 0.25);
     }
+<<<<<<< Updated upstream
     
    
+=======
+ 
+    public bool Atack(Monster monster)
+    {
+        CurrentPlayerMana = CurrentPlayerMana + (int)(PlayerMana * 0.10) <= PlayerMana ? CurrentPlayerMana + (int)(PlayerMana * 0.10) : PlayerMana;
+        monster.CurrentMonsterHealth = (PlayerDamage - monster.MonsterDefense) < 0 ? monster.CurrentMonsterHealth :
+        (monster.CurrentMonsterHealth - (PlayerDamage - monster.MonsterDefense));
+        if (monster.CurrentMonsterHealth < 1) return false;
+        else return true; 
+    }
+    public bool MagicAttack(Monster monster)
+    {
+        CurrentPlayerMana = CurrentPlayerMana - (int)(PlayerMana * 0.5) >= 0 ? CurrentPlayerMana - (int)(PlayerMana * 0.5) : 0;
+        monster.CurrentMonsterHealth = (PlayerMagic) < 0 ? monster.CurrentMonsterHealth : (monster.CurrentMonsterHealth - PlayerMagic);
+        if (monster.CurrentMonsterHealth < 1) return false;
+        else return true;
+>>>>>>> Stashed changes
 
     public bool MonsterAtack(int monsterDamage)
     {
